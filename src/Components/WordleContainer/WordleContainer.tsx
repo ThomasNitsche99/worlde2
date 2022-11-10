@@ -1,11 +1,15 @@
 import { Container, Stack } from "@mui/material";
-import React from "react";
-import { ThemeChanger } from "../Test";
+import React, {useState} from "react";
+import { ThemeChanger } from "../ThemeChanger";
 import { WordRow } from "../WordRow";
 
+//containing all the rows
 export const WordleContainer = () => {
+
+  const b: number[] = [1, 2, 3, 4, 5, 6];
+  const[currentRow, setCurrentRow] = useState<number>(1);
   //get if played today, if not 
-  const WordRowNumber: number = 1
+  
 
 
 
@@ -13,12 +17,11 @@ export const WordleContainer = () => {
     <div>
       <Container >
         <Stack spacing={-1}>
-          <WordRow id={1} />
-          <WordRow id={2}/>
-          <WordRow id={3}/>
-          <WordRow id={4}/>
-          <WordRow id={5}/>
-          <WordRow id={6}/>
+        {b.map((number) => {
+            return (
+              <WordRow id={number} currentRow={currentRow} setCurrentRow={setCurrentRow} />
+            )
+          })}
         </Stack>
         <ThemeChanger />
       </Container>

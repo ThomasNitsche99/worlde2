@@ -6,7 +6,6 @@ export const ThemeChanger: React.FC = () => {
 
   return (
     <div>
-      <div>Hi friend!</div>
       <button onClick={toggleTheme}>
         Switch to {theme === 'light' ? 'dark' : 'light'} mode
       </button>
