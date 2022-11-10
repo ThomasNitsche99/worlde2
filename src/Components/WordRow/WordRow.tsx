@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Container, Grid } from "@mui/material";
 import { WordBox } from "../WordBox/WordBox";
 
-export const WordRow = () => {
+interface WordRowProps{
+  id: number
+}
+
+
+export const WordRow : React.FC<WordRowProps> = ({id} : WordRowProps) => {
   const b: number[] = [1, 2, 3, 4, 5];
 
   return (
