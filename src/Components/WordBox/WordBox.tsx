@@ -5,11 +5,15 @@ import { useFocus } from "../../Assets/useFocus";
 interface WordBoxProps {
   id: number,
   disabled: boolean,
+
   currentColumn: number,
   setCurrentColumn:React.Dispatch<React.SetStateAction<number>> ,
+
+  rowWord: string, 
+  setRowWord: React.Dispatch<React.SetStateAction<string>>
 }
 
-export const WordBox: React.FC<WordBoxProps> = ({id,disabled, currentColumn, setCurrentColumn}: WordBoxProps) => {
+export const WordBox: React.FC<WordBoxProps> = ({id,disabled, currentColumn, setCurrentColumn, rowWord ,setRowWord}: WordBoxProps) => {
 
   const[inputValue, setInputValue] = useState<string>('');
   const [ref, setFocus] = useFocus()
@@ -24,13 +28,12 @@ useEffect(()=>{
 },[currentColumn])
 
   const handleBackspace = (e: KeyboardEvent ) =>{
-    const key = e.key
+    const key = e.key;
     if(id!==1 && key === 'Backspace' && inputValue===''){
       setInputValue('')
       setCurrentColumn(currentColumn-1)
     }
     else{
-
     }
   }
 
@@ -40,10 +43,13 @@ useEffect(()=>{
     if (!/[^a-zA-Z]/.test(newValue) && inputValue==='' && currentColumn!==5){
       setInputValue(newValue.toUpperCase())
       setCurrentColumn(currentColumn+1)
+      setRowWord( rowWord + newValue.toUpperCase())
+
     }
 
     else if((!/[^a-zA-Z]/.test(newValue) && inputValue==='' && currentColumn===5)){
       setInputValue(newValue.toUpperCase())
+      setRowWord( rowWord + newValue.toUpperCase())
     }
     else{
       setInputValue('')

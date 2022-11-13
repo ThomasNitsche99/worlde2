@@ -8,18 +8,28 @@ export const WordleContainer = () => {
 
   const b: number[] = [1, 2, 3, 4, 5, 6];
   const[currentRow, setCurrentRow] = useState<number>(1);
-  //get if played today, if not 
+  const[rowWords, setRowWords] = useState([
+    {id: 1, word: ''},
+    {id:2, word: ''},
+    {id:3, word: ''},
+    {id:4, word: ''},
+    {id:5, word: ''},
+    {id:6, word: ''}
+  ]);
+   
   
-
-
-
   return (
     <div>
       <Container >
         <Stack spacing={-1}>
         {b.map((number) => {
             return (
-              <WordRow id={number} currentRow={currentRow} setCurrentRow={setCurrentRow} />
+              <WordRow 
+                id={number} 
+                currentRow={currentRow} 
+                setCurrentRow={setCurrentRow}
+                setRowWords = {setRowWords}
+                />
             )
           })}
         </Stack>
